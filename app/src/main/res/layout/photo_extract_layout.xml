@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/linearLayout"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:gravity="center_vertical">
+
+       <!-- <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/checkboxLayout">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/erode"
+                android:text="@string/erode"
+                android:textColor="@color/darkWhite"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dilate"
+                android:text="@string/dilate"
+
+                android:textColor="@color/darkWhite"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/kernelLayout"
+            android:visibility="invisible"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+
+            >
+            &lt;!&ndash;    <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kernelDesc"
+                    android:text="@string/blockSize"/>&ndash;&gt;
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/erode_dilate"
+                android:max="10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/erode_dilateSize"
+                />
+        </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gaussian"
+            android:text="@string/gaussian"
+            android:textColor="@color/darkWhite"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/blurLayout"
+            android:visibility="invisible"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            >
+            &lt;!&ndash;    <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/gaussianDesc"
+                    android:text="@string/gaussian"/>&ndash;&gt;
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/gaussianSeekbar"
+                android:max="10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gaussianSize"
+                />
+        </LinearLayout>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+
+            >
+            <!--    <TextView
+                    android:layout_marginStart="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kernelDesc"
+                    android:text="@string/blockSize"/>-->
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/kernel"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kernelSize"
+                />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/threshold_binary"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_binary"
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/threshold_binary_inv"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_binary_inv"
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/threshold_binary_trunc"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_trunc"
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/threshold_binary_tozero"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_to_zero"
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/adaptive_threshold_mean"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_mean"
+
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/adaptive_threshold_gaussian"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_adaptive"
+
+                    android:background="@color/transparent"/>
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/threshold_otsu"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_simple"
+
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/photo_to_soft"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_color_sketch"
+
+                    android:background="@color/transparent"/>
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/photo_to_sketch"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_sketch"
+
+                    android:background="@color/transparent"/>
+
+
+                <ImageButton
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/black_and_white"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/filter_black_white"
+
+                    android:background="@color/transparent"/>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/linearLayout"
+        android:background="@drawable/down_shadow"/>
+</RelativeLayout>

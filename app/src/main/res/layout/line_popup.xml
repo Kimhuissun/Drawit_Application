@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/linearLayout"
+
+    >
+    <com.makeit.sunnycar.drawit.view.LineView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/strokeWidth"
+        android:scaleType="matrix"
+        android:adjustViewBounds="true"
+
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@color/colorPrimary"
+
+        >
+       <!-- <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lineLength"
+            android:id="@+id/textView"/>-->
+
+        <SeekBar
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/contour_length"
+            android:max="20"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/size"
+            android:textColor="@color/darkWhite"
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/blurLinearLayout"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@color/colorPrimary"
+
+        >
+      <!--  <TextView
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blur"
+            android:id="@+id/blurDesc"/>-->
+
+        <SeekBar
+            android:paddingTop="10dp"
+            android:paddingBottom="15dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/blurSeekBar"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blur"
+            android:layout_marginEnd="10dp"
+            android:textColor="@color/darkWhite"
+
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:background="@color/colorPrimary"
+        >
+        <ImageButton
+            android:layout_marginStart="20dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/orgLine"
+            android:background="@android:color/transparent"
+            android:src="@drawable/line_stroke_width"
+            />
+        <ImageButton
+            android:layout_marginStart="20dp"
+
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/gradientLine"
+            android:background="@android:color/transparent"
+            android:src="@drawable/line_stroke_gradient"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/down_shadow"/>
+</LinearLayout>

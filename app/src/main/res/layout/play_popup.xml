@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    android:background="@color/colorPrimary">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/ic_add"
+            android:id="@+id/add_frame"
+            android:scaleType="centerInside"
+            />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/ic_delete"
+            android:id="@+id/remove_frame"
+            android:scaleType="centerInside"
+
+            />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_play"
+            android:id="@+id/animStart"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_more"
+            android:id="@+id/edit"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_palette"
+            android:id="@+id/draw"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+    <SeekBar
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameOpacity"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/recyclerView"
+            android:scrollbars="horizontal">
+
+        </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

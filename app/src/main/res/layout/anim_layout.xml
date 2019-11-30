@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<com.makeit.sunnycar.drawit.view.PlayView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />-->
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/animStop"
+        android:src="@mipmap/ic_stop"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@color/transparent"/>
+</FrameLayout>

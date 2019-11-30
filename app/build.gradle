@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.makeit.sunnycar.drawit"
+        minSdkVersion 22
+        targetSdkVersion 26
+        versionCode 34
+        versionName "34.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            //shrinkResources true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    splits {
+        abi {
+            enable true
+            reset()
+            include "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "x86", "x86_64", "arm64-v8a"
+            //specify that we want to also generate a universal APK that includes all ABIs
+            universalApk true
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+    }
+    buildToolsVersion '29.0.2'
+}
+ext.versionCodes=['armeabi': 3, 'armeabi-v7a': 4, 'arm64-v8a': 5,
+                  mips: 6, 'x86': 7, 'x86_64': 8]
+import com.android.build.OutputFile
+android.applicationVariants.all{ variant->
+        variant.outputs.each {output->
+//        def abiFilter=output.getFilter(OutputFile.ABI)
+//        def abiMultiplier=0
+//        if(abiFilter!=null){
+//            abiMultiplier=project.ext.versionCodes.get(abiFilter)
+//        }
+            def baseAbiVersionCode=project.ext.versionCodes.get(output.getFilter(OutputFile.ABI));
+            if(baseAbiVersionCode!=null){
+                output.versionCodeOverride=
+                        baseAbiVersionCode*1000+android.defaultConfig.versionCode
+            }
+
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //implementation 'com.android.support:appcompat-v7:26.1.0'
+    //implementation 'com.android.support:appcompat-v7:26.1.0'
+    //implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.github.yukuku:ambilwarna:2.0.1'
+    implementation 'com.isseiaoki:simplecropview:1.1.7'
+    //implementation 'com.naver.android.helloyako:imagecropview:1.2.0'
+    /*implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'{
+        exclude group: 'com.android.support'
+    }*/
+    //compile 'com.rmtheis:tess-two:8.0.0'
+    implementation project(':openCVLibrary340')
+    implementation 'com.anjlab.android.iab.v3:library:1.0.44'
+    implementation 'com.google.android.gms:play-services-ads:12.0.1'
+    implementation 'com.android.support:design:26.1.0'
+}

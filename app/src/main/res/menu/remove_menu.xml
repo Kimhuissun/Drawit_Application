@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/manual"
+        android:title="@string/manual"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@mipmap/ic_tune"
+        />
+
+    <item
+        android:id="@+id/extract"
+        android:title="@string/extract"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@mipmap/ic_tune"
+        />
+
+    <item
+        android:id="@+id/auto"
+        android:title="@string/auto"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@mipmap/ic_tune"
+        />
+    <item
+        android:id="@+id/zoom"
+        android:title="@string/zoom"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:icon="@mipmap/ic_tune"
+        />
+</menu>

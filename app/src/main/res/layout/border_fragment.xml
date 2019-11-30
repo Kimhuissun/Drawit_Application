@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout">
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+    android:layout_above="@+id/bottomMenu">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            layout="@layout/photo_extract_layout"
+            />
+
+    </LinearLayout>
+<!--<android.support.design.widget.TabLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/tabLayout"
+    app:tabMode="fixed">
+
+</android.support.design.widget.TabLayout>
+<android.support.v4.view.ViewPager
+    android:id="@+id/vPager"
+    android:layout_width="match_parent"
+    android:layout_height="150dp">
+
+</android.support.v4.view.ViewPager>-->
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/pictureInfo"
+    android:background="@color/colorPrimary"
+    android:paddingStart="10dp"
+    android:textColor="@android:color/black"/>
+<!--
+    <ImageButton
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/next"
+        android:background="@color/transparent"
+        android:src="@mipmap/ic_next"
+        android:scaleType="centerInside"/>-->
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/imageView"
+    android:scaleType="fitCenter"/>
+
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@+id/bottomMenu"
+        android:background="@drawable/up_shadow"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:id="@+id/bottomMenu"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="5dp"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp">
+        <!--<ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/load"
+            android:src="@mipmap/ic_load"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+-->
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/redo"
+            android:src="@mipmap/ic_redo"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"/>
+        <!--<ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/effect"
+            android:src="@mipmap/ic_effect"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"
+            />-->
+       <!-- <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/save"
+            android:src="@mipmap/ic_save"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"
+            />-->
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/next"
+            android:src="@mipmap/ic_palette"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+
+    android:id="@+id/linearLayout"
+    android:background="@color/colorPrimary">
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/pen"
+        android:src="@mipmap/ic_color"
+        android:scaleType="centerInside"
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/eraser"
+        android:src="@mipmap/ic_eraser"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"/>
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/spoid"
+        android:src="@mipmap/ic_spoid"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"
+        />
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/palette"
+        android:src="@mipmap/ic_palette"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/size"
+        android:src="@mipmap/ic_line_length"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"/>
+
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/play"
+        android:src="@mipmap/ic_play"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"/>
+    <ImageButton
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_height="match_parent"
+        android:id="@+id/back"
+        android:src="@mipmap/ic_origin"
+        android:scaleType="centerInside"
+
+        android:background="@android:color/transparent"/>
+
+</LinearLayout>

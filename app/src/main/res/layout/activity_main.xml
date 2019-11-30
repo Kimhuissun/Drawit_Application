@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/colorPrimary">
+
+
+<!--
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sketchOutline"
+            android:checked="true"
+            android:text="@string/sketchOutline"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/photoOutline"
+            android:text="@string/photoOutline"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_below="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/ok"/>-->
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/brush"
+        android:src="@mipmap/brush"
+        android:background="@color/transparent"
+        android:scaleType="centerInside"/>
+   <!-- <ImageButton
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/picture"
+        android:layout_below="@+id/brush"
+        android:src="@mipmap/ic_load"
+        android:background="@color/transparent"
+        android:scaleType="centerInside"/>
+-->
+</RelativeLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <!-- <com.naver.android.helloyako.imagecrop.view.ImageCropView
+        xmlns:imagecrop="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        imagecrop:setInnerGridMode="on"
+        imagecrop:gridInnerStroke="1dp"
+        imagecrop:setOuterGridMode="on"
+        imagecrop:gridOuterStroke="1dp"
+        imagecrop:gridInnerColor="#66ffffff"
+        imagecrop:gridOuterColor="#ffffff"
+        android:id="@+id/cropView"
+
+        />-->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
+        android:layout_gravity="end"
+        android:src="@mipmap/ic_save"
+        android:scaleType="centerInside"
+
+        android:onClick="setCropMode"/>
+
+    <com.isseiaoki.simplecropview.CropImageView
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:id="@+id/cropImageView"
+        android:padding="16dp"
+        custom:scv_crop_mode="fit_image"
+        custom:scv_background_color="@color/colorAccent"
+        custom:scv_handle_color="@color/colorAccent"
+        custom:scv_guide_color="@color/colorAccent"
+        custom:scv_overlay_color="@color/white"
+        custom:scv_frame_color="@color/colorAccent"
+        custom:scv_handle_size="14dp"
+        custom:scv_touch_padding="8dp"
+        custom:scv_handle_show_mode="show_always"
+        custom:scv_guide_show_mode="show_always"
+        custom:scv_min_frame_size="50dp"
+        custom:scv_frame_stroke_weight="1dp"
+        custom:scv_guide_stroke_weight="1dp"
+        />
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fit_image"
+                android:text="@string/fit_image"
+                android:onClick="setCropMode"/>
+
+            <Button
+                android:id="@+id/ratio_4_3"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:onClick="setCropMode"
+                android:text="@string/ratio_4_3" />
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratio_3_4"
+                android:text="@string/ratio_3_4"
+                android:onClick="setCropMode"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/square"
+                android:text="@string/square"
+                android:onClick="setCropMode"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratio_16_9"
+                android:text="@string/ratio_16_9"
+                android:onClick="setCropMode"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ratio_9_16"
+                android:text="@string/ratio_9_16"
+                android:onClick="setCropMode"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/free"
+                android:text="@string/free"
+                android:onClick="setCropMode"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/custom"
+                android:text="@string/custom"
+                android:onClick="setCropMode"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <!-- <View
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/left_shadow"
+        />-->
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+    android:gravity="center_horizontal"
+        >
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_layer_delete" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:scrollbars="vertical">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageButton
+            android:id="@+id/add_layer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ic_layer_add" />
+    </LinearLayout>
+

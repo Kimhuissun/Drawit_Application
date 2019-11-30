@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent_layout"
+    >
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/frameLayout"
+        android:layout_above="@+id/menuLayout">
+
+        <com.makeit.sunnycar.drawit.view.DrawingContourView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"            />
+       <!-- <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/expensive"
+            android:visibility="gone"
+            android:checked="false"/>-->
+        <ProgressBar
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"/>
+       <!-- <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fps"
+            android:layout_gravity="right|top"/>
+-->
+        <!--  android:scaleType="matrix"
+          android:adjustViewBounds="true"
+          android:background="@color/gray"-->
+
+    </FrameLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@+id/menuLayout"
+        android:background="@drawable/up_shadow"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/menuLayout"
+        android:layout_above="@+id/adView"
+        android:background="@color/colorPrimary">
+
+        <com.makeit.sunnycar.drawit.view.FillUpperMenu
+            android:id="@+id/fillUpperMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.makeit.sunnycar.drawit.view.FillUpperMenu>
+
+        <com.makeit.sunnycar.drawit.view.FillBottomMenu
+            android:id="@+id/fillBottomMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fillUpperMenu">
+
+        </com.makeit.sunnycar.drawit.view.FillBottomMenu>
+    </RelativeLayout>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/unit_id">
+    </com.google.android.gms.ads.AdView>
+
+
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/fillUpperMenu"
+        android:background="@drawable/down_shadow"/>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/up_shadow"/>
+
+</RelativeLayout>

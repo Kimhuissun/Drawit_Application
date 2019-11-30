@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/relativeLayout"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/pictureInfo"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/black"/>
+
+        <!--<RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/erode"
+                android:checked="true"
+                android:text="@string/erode"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dilate"
+                android:text="@string/dilate"/>
+        </RadioGroup>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/checkboxLayout">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/erode"
+                android:text="@string/erode"
+                android:textColor="@color/darkWhite"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/dilate"
+                android:text="@string/dilate"
+
+                android:textColor="@color/darkWhite"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/kernelLayout"
+            android:visibility="invisible"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+
+            >
+        <!--    <TextView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kernelDesc"
+                android:text="@string/blockSize"/>-->
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/kernel"
+                android:max="10"
+               />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kernelSize"
+                />
+        </LinearLayout>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gaussian"
+            android:text="@string/gaussian"
+            android:textColor="@color/darkWhite"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/blurLayout"
+            android:visibility="invisible"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            >
+        <!--    <TextView
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gaussianDesc"
+                android:text="@string/gaussian"/>-->
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:id="@+id/gaussianSeekbar"
+                android:max="10"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gaussianSize"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/linearLayout"
+        android:background="@drawable/down_shadow"/>
+
+   <!-- <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed"
+        android:id="@+id/tabLayout"
+        android:background="@color/colorPrimary"
+        android:layout_below="@+id/linearLayout">
+
+    </android.support.design.widget.TabLayout>
+-->
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomMenu"
+        android:layout_below="@id/linearLayout"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+
+        />
+  <!--  <android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/removeNavi"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/remove_menu"
+        android:layout_above="@+id/bottomNavi"
+        android:visibility="invisible">
+
+    </android.support.design.widget.BottomNavigationView>-->
+    <!--<android.support.design.widget.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNavi"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        app:menu="@menu/navi_menu"
+        android:layout_alignParentBottom="true">
+
+    </android.support.design.widget.BottomNavigationView>-->
+
+
+
+    <!--</LinearLayout>-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_above="@+id/bottomMenu"
+        android:background="@drawable/up_shadow"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:id="@+id/bottomMenu"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="5dp"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp">
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/load"
+            android:src="@mipmap/ic_load"
+            android:scaleType="centerInside"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/redo"
+            android:src="@mipmap/ic_redo"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"/>
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/effect"
+            android:src="@mipmap/ic_effect"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"
+            />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/save"
+            android:src="@mipmap/ic_save"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"
+            />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:id="@+id/next"
+            android:src="@mipmap/ic_palette"
+            android:scaleType="centerInside"
+
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+

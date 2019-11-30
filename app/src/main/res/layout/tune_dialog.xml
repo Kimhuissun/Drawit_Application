@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/darkWhite"
+            android:id="@+id/sketchSize"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/save"
+            android:text="@string/save"
+            android:textColor="@color/darkWhite"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroup"
+            android:layout_gravity="center_horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/youtube_1080"
+                android:checked="true"
+                android:text="@string/youtube_1080"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/youtube_720"
+                android:text="@string/youtube_720"
+                android:textSize="15sp"
+                android:textColor="@color/darkWhite"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/instagram_16_9"
+                android:text="@string/instagram_16_9"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/darkWhite"/>
+            <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/instagram_1_1"
+            android:text="@string/instagram_1_1"
+                android:textColor="@color/darkWhite"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vimeo_1080"
+                android:text="@string/vimeo_1080"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/facebook_720"
+                android:text="@string/facebook_720"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/darkWhite"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tumblr_16_9"
+                android:text="@string/tumblr_16_9"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/darkWhite"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tumblr_4_3"
+                android:text="@string/tumblr_4_3"
+                android:layout_marginTop="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/darkWhite"/>
+        </RadioGroup>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/width"
+            android:textColor="@color/darkWhite"/>
+        <TextView
+            android:layout_marginStart="70dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/height"
+            android:textColor="@color/darkWhite"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/width"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="@string/zero"
+            android:textColor="@color/darkWhite"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/px"
+            android:layout_marginEnd="50dp"
+            android:textColor="@color/darkWhite" />
+
+        <TextView
+            android:id="@+id/height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/darkWhite"
+            android:text="@string/zero"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/px"
+            android:textColor="@color/darkWhite"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/fps"
+        android:textColor="@color/darkWhite"/>
+    <NumberPicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numberPicker"
+        android:layout_gravity="center_horizontal"
+        android:theme="@style/AppTheme.Picker"
+        >
+
+    </NumberPicker>
+
+</LinearLayout>
