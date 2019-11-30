@@ -7,7 +7,7 @@ You will need JDK 1.7+ installed to work with it. Gradle, Android SDK, and proje
 Building the app
 ---------------
 ```
-git clone https://github.com/Kimhuissun/Drawit.git
+git clone https://github.com/Kimhuissun/Drawit_Application.git
 ```
 
 
