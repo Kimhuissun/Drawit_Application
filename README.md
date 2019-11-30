@@ -12,7 +12,7 @@ git clone https://github.com/Kimhuissun/Drawit_Application.git
 
 implementation
 ---------------
-[![Drawit](http://img.youtube.com/vi/a-cfUiHilgE&feature=youtu.be/0.jpg)](https://youtu.be/a-cfUiHilgE)
+[![Drawit](http://img.youtube.com/vi/a-cfUiHilgE&feature=youtu.be/1.jpg)](https://youtu.be/a-cfUiHilgE)
 
 
 
