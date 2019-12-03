@@ -47,9 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setView() {
         ImageButton brush=(ImageButton)findViewById(R.id.brush);
-        //ImageButton picture=(ImageButton)findViewById(R.id.picture);
+
         brush.setOnClickListener(this);
-        //picture.setOnClickListener(this);
 
     }
     private void showPhotoDialog() {
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onSave() {
                 Intent intent=new Intent(getApplicationContext(),FillSketch.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                //intent.putExtra(GET_PHOTO,false);
+
                 startActivity(intent);
             }
         });
@@ -81,17 +80,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             showPhotoDialog();
 
         }
-       /* else if(id==R.id.picture){
-            //startActivity(new Intent(getApplicationContext(),FillSketch.class));
-            if(!hasPermissions(PERMISSIONS)){//퍼미션 허가했는지 여부
-                requestNessaryPermissions(PERMISSIONS);//허가 안되었으면 사용자에게 요청
-            }else {
-                //이미 사용자에게 퍼미션 허가 받음
-                //Log.e("oncreate","permission");
-                distpatchPhotoSelectionIntent();
 
-            }
-        }*/
     }
     private boolean hasPermissions(String[] permissions){
         int result=-1;
@@ -141,11 +130,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     if (resultCode == RESULT_OK && data != null) {
                         final Uri uri=data.getData();
-                        //String[] filePathColumn={MediaStore.Images.Media.DATA};
+
                         if (uri != null) {
 
-                            //bitmapInputStream = getContentResolver().openInputStream(uri);
-                            //new GetImage(getApplicationContext()).start();
                             startActivity(
                                     new Intent(this, CropActivity.class)
                                             .setData(uri)

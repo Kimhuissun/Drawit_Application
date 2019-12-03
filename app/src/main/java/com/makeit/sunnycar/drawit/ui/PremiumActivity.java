@@ -55,55 +55,7 @@ public class PremiumActivity extends AppCompatActivity implements View.OnClickLi
         billingProcessor=new BillingProcessor(this,PUBLIC_KEY,this);
     }
 
-    /*  private void connectToGooglePlay() {
-          billingClient=BillingClient.newBuilder(this).setListener(this).build();
-          billingClient.startConnection(new BillingClientStateListener() {
-              @Override
-              public void onBillingSetupFinished(int responseCode) {
-                  if(responseCode== BillingClient.BillingResponse.OK){
-                      //the billing client is ready. you can query purchases here
-                  }
-              }
 
-              @Override
-              public void onBillingServiceDisconnected() {
-                  // Try to restart the connection on the next request to
-                  // Google Play by calling the startConnection() method.
-              }
-          });
-
-          List skuList=new ArrayList();
-          final String layerPremium=getResources().getString(R.string.layerPremium);
-          final String saveCountPremium=getResources().getString(R.string.saveCountPremium);
-          final String noLimitPremium=getResources().getString(R.string.noLimitPremium);
-          skuList.add(layerPremium);
-          skuList.add(saveCountPremium);
-          skuList.add(noLimitPremium);
-          SkuDetailsParams.Builder params=SkuDetailsParams.newBuilder();
-          billingClient.querySkuDetailsAsync(params.build(),
-                  new SkuDetailsResponseListener() {
-                      @Override
-                      public void onSkuDetailsResponse(int responseCode, List<SkuDetails> skuDetailsList) {
-                          if(responseCode== BillingClient.BillingResponse.OK
-                                  &&skuDetailsList!=null){
-                              for(SkuDetails skuDetails:skuDetailsList){
-                                  String sku=skuDetails.getSku();
-                                  String price=skuDetails.getPrice();
-                                  if(layerPremium.equals(sku)){
-                                      PremiumActivity.layerPremiumPrice=price;
-                                  }else if(saveCountPremium.equals(sku)){
-                                      PremiumActivity.saveCountPremiumPrice=price;
-
-                                  }else if(noLimitPremium.equals(sku)){
-                                      PremiumActivity.noLimitPremiumPrice=price;
-
-                                  }
-                              }
-                          }
-                      }
-                  });
-      }
-  */
     @Override
     public void onClick(View view) {
         int id=view.getId();
@@ -111,11 +63,7 @@ public class PremiumActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.layerButton:
                 billingProcessor.purchase(this,products.get(0).productId);
                 break;
-               /* BillingFlowParams flowParams=BillingFlowParams.newBuilder()
-                        .setSku(getResources().getString(R.string.layerPremium))
-                        .setType(BillingClient.SkuType.INAPP)
-                        .build();
-                int response=billingClient.launchBillingFlow(this,flowParams);*/
+
         }
     }
 
@@ -180,23 +128,5 @@ public class PremiumActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
-
-   /* @Override
-    public void onPurchasesUpdated(int responseCode, @Nullable List<Purchase> purchases) {
-
-        if(responseCode== BillingClient.BillingResponse.OK
-                &&purchases!=null){
-            for(Purchase purchase:purchases){
-                handlePurchase(purchase);
-            }
-        }
-    }
-
-    private void handlePurchase(Purchase purchase) {
-        purchase.getSku();
-        purchase.getPurchaseToken();
-        purchase.getOrderId();
-        purchase.getOriginalJson();
-
-    }*/
+    
 }

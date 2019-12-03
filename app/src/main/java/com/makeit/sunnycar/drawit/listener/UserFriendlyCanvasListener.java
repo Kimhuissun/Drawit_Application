@@ -26,11 +26,6 @@ public class UserFriendlyCanvasListener {
     float curX;
     float curY;
 
-    //static final int NONE=0;
-    //static final int DRAG=1;
-    //static final int ZOOM=2;
-    //int mode=NONE;
-
     float targetX,targetY;
     float targetScale,targetScaleX,targetScaleY;
     float scaleChange,targetRatio,transitionRatio;
@@ -43,7 +38,6 @@ public class UserFriendlyCanvasListener {
     float oldDist=1f;
     PointF mid=new PointF();
 
-    //private Handler mHandler=new Handler();
 
     float minScale;
     float maxScale=8.0f;
@@ -73,8 +67,6 @@ public class UserFriendlyCanvasListener {
         this.drawingContourView=drawingContourView;
         screenDensity=density;
         this.CANVAS_DST_RECT=CANVAS_DST_RECT;
-        //initPaints();
-        //gestureDetector=new GestureDetector(new MyGestureDetector());
 
     }
 
@@ -195,8 +187,6 @@ public class UserFriendlyCanvasListener {
 
             isAnimating=true;
 
-            //mHandler.removeCallbacks(mUpdateImagePositionTask);
-            //mHandler.postDelayed(mUpdateImagePositionTask,100);
         }
 
     }
@@ -223,10 +213,7 @@ public class UserFriendlyCanvasListener {
         sb.append("]");
     }
     public boolean onTouchEvent(MotionEvent event){
-//        if(gestureDetector.onTouchEvent(event)){
-//            return true;
-//        }
-        //dumpEvent(event);
+
         if(isAnimating) return true;
 
         float[] mvals=new float[9];
@@ -238,7 +225,7 @@ public class UserFriendlyCanvasListener {
                 if(!isAnimating&&ptrCount==1){
                     savedMatrix.set(matrix);
                     start.set(event.getX(),event.getY());
-                    //mode=DRAG;
+
                     isPinch=false;
 
                     final int pointerIndex = event.getActionIndex();
@@ -246,9 +233,8 @@ public class UserFriendlyCanvasListener {
                     primStartTouchEventXY[1] = event.getY(pointerIndex);
                     mFirstActivePointerId = event.getPointerId(pointerIndex);
 
-                    //
                     drawingContourView.friendlyDraw(primStartTouchEventXY,matrix);
-                    //drawingContourView.downToDraw(primStartTouchEventXY);
+
                     return false;
                 }else if(ptrCount==2){
 
@@ -262,12 +248,11 @@ public class UserFriendlyCanvasListener {
                     secStartTouchEventXY[1] = y;
                     mSecActivePointerId = event.getPointerId(pointerIndex);
 
-                    //primDistance=distance(primStartTouchEventXY,secStartTouchEventXY);
                     oldDist=spacing(event);
                     if(oldDist>10f){
                         savedMatrix.set(matrix);
                         midPoint(mid,event);
-                        //mode=ZOOM;
+
                     }
                     isPinch=true;
 
@@ -284,12 +269,12 @@ public class UserFriendlyCanvasListener {
                 }
                 else {
                     drawingContourView.upToDraw();
-                    //drawingContourView.friendlyUp();
+
                     return false;
                 }
             }
             case MotionEvent.ACTION_POINTER_UP:{
-                //mode=NONE;
+
                 matrix.getValues(mvals);
                 curX=mvals[2];
                 curY=mvals[5];
@@ -297,7 +282,7 @@ public class UserFriendlyCanvasListener {
 
                 ptrCount--;
                 mSecActivePointerId=INVALID_POINTER_ID;
-                // isPinch=false;
+
                 final int pointerIndex = event.getActionIndex();
                 final int pointerId = event.getPointerId(pointerIndex);
                 if (pointerId == mFirstActivePointerId) {
@@ -328,10 +313,6 @@ public class UserFriendlyCanvasListener {
                         matrix.getValues(mvals);
                         currentScale=mvals[0];
 
-//                        float[] _mid={(event.getX(0)+event.getX(1))/2,
-//                                (event.getY(0)+event.getY(1))/2};
-//                        matrix.mapPoints(_mid);
-
                         if(currentScale*scale<=minScale){
                             matrix.postScale(minScale/currentScale,minScale/currentScale,
                                     mid.x,mid.y);
@@ -354,7 +335,7 @@ public class UserFriendlyCanvasListener {
                 }
             }
         }
-        //calculate();
+
         return true;
     }
 
@@ -377,7 +358,7 @@ public class UserFriendlyCanvasListener {
             float[] mvals;
             if(Math.abs(targetX-curX)<5&&Math.abs(targetY-curY)<5){
                 isAnimating=false;
-                //mHandler.removeCallbacks(mUpdateImagePositionTask);
+
                 mvals=new float[9];
                 matrix.getValues(mvals);
 
@@ -401,7 +382,7 @@ public class UserFriendlyCanvasListener {
                 float diffY=(targetY-curY)*0.3f;
 
                 matrix.postTranslate(diffX,diffY);
-                //mHandler.postDelayed(this,25);
+
 
 
             }
@@ -439,7 +420,7 @@ public class UserFriendlyCanvasListener {
 
                 if(scaleChange!=1){
                     matrix.postScale(scaleChange,scaleChange,targetScaleX,targetScaleY);
-                    //mHandler.postDelayed(mUpdateImageScale,15);
+
                     calculate();
                 }else{
                     isAnimating=false;
@@ -447,9 +428,9 @@ public class UserFriendlyCanvasListener {
                     matrix.postScale(targetScale/currentScale,targetScale/currentScale,
                             targetScaleX,targetScaleY);
                     currentScale=targetScale;
-                    //mHandler.removeCallbacks(mUpdateImageScale);
+
                     calculate();
-                    //checkImageConstraints();
+
                 }
             }else{
                 isAnimating=false;
@@ -457,17 +438,15 @@ public class UserFriendlyCanvasListener {
                 matrix.postScale(targetScale/currentScale,targetScale/currentScale,
                         targetScaleX,targetScaleY);
                 currentScale=targetScale;
-                //mHandler.removeCallbacks(mUpdateImageScale);
+
                 calculate();
-                //checkImageConstraints();
+
             }
         }
     };
     private void calculate() {
         float[] layout=new float[]{0.0f,0.0f, DrawingContourView.WIDTH,DrawingContourView.HEIGHT};
-       /* float[] layout=new float[]{DrawingContourView.center_layout[0],
-                DrawingContourView.center_layout[1],DrawingContourView.center_layout[2],
-                DrawingContourView.center_layout[3]};*/
+
         matrix.mapPoints(layout);
         CANVAS_DST_RECT.set((int) layout[0], (int) layout[1], (int) layout[2], (int) layout[3]);
 
@@ -476,13 +455,9 @@ public class UserFriendlyCanvasListener {
     public void reset() {
         matrix.set(firstMatrix);
         savedMatrix.set(firstMatrix);
-        //DEFAULT_SCALE_FIT_INSIDE 혹은 DEFAULT_SCALE_ORIGINAL인지에 따라 matrix의 초기화값이 달라짐
-        //그럼 matrix를 invert할 때
-        //1)DEFAULT_SCALE_ORIGINAL -> 변환 성공
-        //2)DEFAULT_SCALE_FIT_INSIDE -> matrix의 초기화값이 실제 canvas를 기준으로 변화되지 않기 때문에
-        //inver값이 잘못됨
+
         calculate();
-        //matrix.reset();
+
 
     }
 
@@ -490,9 +465,5 @@ public class UserFriendlyCanvasListener {
 
         return matrix;
     }
-//    class MyGestureDetector extends GestureDetector.SimpleOnGestureListener {
-//
-//
-//
-//    }
+
 }

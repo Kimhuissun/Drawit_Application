@@ -27,30 +27,15 @@ public class SaveImage extends Thread {
     private final LayerAdapter layerAdapter;
     private Context context;
     private boolean hasLayer;
-    //private SharedPreferences sharedPreferences;
-    //private DrawingContourView drawingContourView;
 
     public SaveImage(Context context,boolean hasLayer,LayerAdapter layerAdapter) {
 
         this.context = context;
         this.hasLayer=hasLayer;
         this.layerAdapter=layerAdapter;
-        //this.sharedPreferences=context.getSharedPreferences(MainActivity.DIGITALISED_LINES,0);
-    }
-   /* public boolean getSaveCount() {
-        //SharedPreferences sf= context.getSharedPreferences(MainActivity.DIGITALISED_LINES,0);
-        save_count=sharedPreferences.getInt(MainActivity.GET_SAVE_COUNT,0);
-        if(save_count<MainActivity.SAVE_COUNT_MAX){
-            return true;
-        }else return false;
 
     }
 
-    public void setSaveCount(int count){
-        SharedPreferences.Editor editor=sharedPreferences.edit();
-        editor.putInt(MainActivity.GET_SAVE_COUNT,count);
-        editor.apply();
-    }*/
     @Override
     public void run() {
         super.run();
@@ -58,7 +43,7 @@ public class SaveImage extends Thread {
         String toast_text="";
 
         if(Environment.MEDIA_MOUNTED.equals(state)){
-            if(layerAdapter!=null) {//in fillsketch
+            if(layerAdapter!=null) {
 
                 for(int i=0;i<layerAdapter.frames.size();i++){
                     Frame frame=layerAdapter.frames.get(i);
@@ -86,26 +71,6 @@ public class SaveImage extends Thread {
                     try {
                         FileOutputStream fo=new FileOutputStream(imageFile);
                         frame.redrawForSave();
-                       /* if(frame.layersBitmap==null){
-                            frame.layersBitmap =
-                                    Bitmap.createBitmap(DrawingContourView.WIDTH, DrawingContourView.HEIGHT, Bitmap.Config.ARGB_4444);
-                            frame.layersCanvas=new Canvas(frame.layersBitmap);
-                        }
-                        if(frame.layersCanvas==null){
-                            frame.layersCanvas=new Canvas(frame.layersBitmap);
-                        }
-                        frame.redrawForSave();*/
-
-                       /* frame.layersCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-                            for(int j = frame.layers.size()-1; j>=0; j--){
-                                Layer layer=frame.layers.get(j);
-                                if(layer.eyeOn){
-                                    DrawingContourView.createPathBitmap(layer,frame.layersCanvas);
-                                    //frame.layersCanvas.drawBitmap(layer.pathBitmap,0,0,DrawingContourView.mBitmapPaint);
-                                }
-
-                            }
-*/
                             bitmapToFile(fo,frame.layersBitmap);
                             toast_text="save";
 
@@ -116,47 +81,6 @@ public class SaveImage extends Thread {
 
 
             } else toast_text="no image";
-            /*else {
-                if(ThreshHandler.FINAL_IMAGE!=null) {
-                    File newFile=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"outline");
-                    if(!newFile.exists()){
-                        if(!newFile.mkdirs()){
-                            //   Log.e("newPath", " failed");
-                        }
-                    }
-                    Calendar today=Calendar.getInstance();
-                    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyyMMddHHmm"
-                            ,java.util.Locale.getDefault());
-
-                    String img_name= simpleDateFormat.format(today.getTime())+".png";//String.valueOf(System.currentTimeMillis());
-                    File imageFile=new File(newFile,img_name);
-                    if(!imageFile.exists()){
-                        try {
-                            if(!imageFile.createNewFile()){
-                                // Log.e("newFile", " failed");
-                            }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    try {
-                        FileOutputStream fo = new FileOutputStream(imageFile);
-                        bitmapToFile(fo,ThreshHandler.FINAL_IMAGE);
-
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-
-                    toast_text="save";
-                    //setSaveCount(++save_count);
-
-                }
-                else toast_text="no image";
-
-
-        }
-*/
-            //}
 
             Handler mainHandler=new Handler(Looper.getMainLooper());
             final String finalToast_text = toast_text;
@@ -169,7 +93,7 @@ public class SaveImage extends Thread {
             });
 
         }else {
-           // goPremiumActivity();
+
         }
 
     }
@@ -187,7 +111,6 @@ public class SaveImage extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //FINAL_IMAGE.compress(Bitmap.CompressFormat.PNG,100,fo);
 
 
     }

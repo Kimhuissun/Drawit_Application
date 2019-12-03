@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Frame {
     public Bitmap framesBitmap;
-    public Canvas framesCanvas;//=new Canvas(framesBitmap);
+    public Canvas framesCanvas;
     public static int otherFrameOpacity=100;
     private Paint framesPaint;
     public static Frame currentFrame;
@@ -54,33 +54,20 @@ public class Frame {
         framesPaint.setDither(true);
         framesPaint.setFlags(Paint.DITHER_FLAG);
         framesPaint.setAlpha(100);
-      /*  layerPaint=new Paint();
-        layerPaint.setDither(true);
-        layerPaint.setAntiAlias(true);
-        layerPaint.setFilterBitmap(true);
-        layerPaint.setFlags(Paint.DITHER_FLAG|Paint.FILTER_BITMAP_FLAG|Paint.ANTI_ALIAS_FLAG);
 
-*/
       if(WIDTH==0||HEIGHT==0){
-         /* if(Threshold.FINAL_IMAGE!=null) {
-              WIDTH=Threshold.FINAL_IMAGE.getWidth();
-              HEIGHT=Threshold.FINAL_IMAGE.getHeight();
-          }else {
-              WIDTH=DrawingContourView.WIDTH;
-              HEIGHT=DrawingContourView.HEIGHT;
-          }*/
+
           WIDTH=DrawingContourView.WIDTH;
           HEIGHT=DrawingContourView.HEIGHT;
       }
     }
 
     public synchronized static void setCurrentFrame(int position,LayerAdapter layerAdapter) {
-        //DrawingContourView.stopdrawingThread();
+
         CURRENT_FRAME_POSITION=position;
         currentFrame= layerAdapter.frames.get(CURRENT_FRAME_POSITION);
         currentFrame.getCurrentLayer();
         currentFrame.setLayerAdapter(layerAdapter);
-        //DrawingContourView.restartdrawingThread();
 
     }
 
@@ -101,19 +88,14 @@ public class Frame {
     }
 
     private void drawFrameBitmap() {
-        //synchronized (this){
+
             Iterator<Layer> iterator=layers.iterator();
             layersCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
 
             while(iterator.hasNext()){
                 Layer layer=iterator.next();
-               // synchronized (layer){
-
                 layer.draw(layersCanvas);
-               // }
             }
-        //}
-
     }
     public synchronized void drawNotCurrentFramesBitmap(){
 
@@ -124,13 +106,6 @@ public class Frame {
 
             while(frameIterator.hasNext()){
                 Frame frame=frameIterator.next();
-                //synchronized (frame){
-                //frame.drawFrameBitmap();
-
-                                 /*   if(isExpensive){
-                                        mBitmapPaint.setAlpha(frame.frameOpacity);
-                                        canvas.drawBitmap(frame.layersBitmap,0,0,mBitmapPaint);
-                                    }else {*/
 
                 if(!frame.equals(Frame.currentFrame)){
                     Iterator<Layer> layerIterator=frame.layers.iterator();
@@ -144,20 +119,6 @@ public class Frame {
 
                 }
 
-                // }
-                //}
-
-
-
-                               /* Iterator<Layer> iterator=frame.layers.iterator();
-                                while(iterator.hasNext()){
-                                    Layer layer=iterator.next();
-                                    //  synchronized (layer){
-                                    if(layer.eyeOn) {
-                                        layer.draw(canvas);
-                                        //      }
-                                    }
-                                }*/
             }
         }
 
@@ -170,11 +131,9 @@ public class Frame {
             Layer layer=layers.get(layer_pos);
             undoPath.add(layer.removeCurrentPath());
             undoPaint.add(layer.removeCurrentPaint());
-            //synchronized (layer){
+
             layer.undo();
-            //drawFrameBitmap();
-            //drawFramesBitmap();
-            //}
+
         }
 
 
@@ -194,13 +153,8 @@ public class Frame {
             LAYER_HISTORY.add(undoLayerHistory.remove(undoLayerHistory.size()-1));
 
             Layer layer=layers.get(LAYER_HISTORY.get(LAYER_HISTORY.size()-1));
-            //synchronized (layer){
                 layer.redo(undoPath.remove(undoPath.size()-1),
                         undoPaint.remove(undoPaint.size()-1));
-                //drawFrameBitmap();
-                //drawFramesBitmap();
-
-            //}
 
         }
 
@@ -216,35 +170,18 @@ public class Frame {
             layer.redrawForSave(layersCanvas);
         }
 
-        //drawFrameBitmap();
     }
     public void redrawOnBeforeCanvas() {
             currentLayer.redrawOnBeforeCanvas();
-            //drawFrameBitmap();
-            //drawFramesBitmap();
-
 
     }
 
-   /* public synchronized void resetBeforeCanvas() {
-        currentLayer.resetBeforeCanvas();
-    }*/
     public synchronized void resetLayerOpacity(int position,int progress){
         layers.get(position).layerOpacity=progress;
-        //drawFrameBitmap();
-        //drawFramesBitmap();
 
     }
     public synchronized void drawBitmap() {
         drawFrameBitmap();
-        //drawFramesBitmap();
-       /* Iterator<Layer> layerIterator=layers.iterator();
-        layersCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-
-        while (layerIterator.hasNext()){
-            Layer layer=layerIterator.next();
-            layer.draw(layersCanvas);
-        }*/
     }
     public void setResizedBitmapAndRemoveAllPens() {
         currentLayer.setResizedBitmapAndRemoveAllPens();
@@ -277,8 +214,6 @@ public class Frame {
         if (layers.size() > 1) {
             setCurrentLayer(0);
 
-            // Layer layer=Frame.currentFrame.layers.get(removedPosition);
-            // layer.pathBitmap.recycle();
             synchronized (currentLayer){
                 layers.remove(removedPosition);
                 for(int i=0;i<LAYER_HISTORY.size();i++){
@@ -291,48 +226,14 @@ public class Frame {
                 undoLayerHistory.clear();
             }
 
-            //drawFrameBitmap();
 
             return true;
         } else return false;
     }
 
-   /* public synchronized void drawLayersOnView(Canvas canvas) {
-        Iterator<Layer> iterator=layers.iterator();
-        canvas.save();
-        canvas.scale(Layer.scaleFactor,Layer.scaleFactor,Layer.scalePointX,Layer.scalePointY);
-        canvas.translate(Layer.mPosX,Layer.mPosY);
-        canvas.rotate(Layer.mAngle,Layer.scalePointX,Layer.scalePointY);
-        canvas.drawRect(0,0,WIDTH,HEIGHT,whitePaint);
-
-
-        canvas.drawBitmap(currentFrame.framesBitmap,0,0,DrawingContourView.framePaint);
-
-        while(iterator.hasNext()){
-
-            Layer layer=iterator.next();
-            if(layer.equals(currentLayer)){
-                layer.drawBeforeCanvas(canvas);
-            }else layer.draw(canvas);
-
-            canvas.drawColor(Color.TRANSPARENT);
-
-            // synchronized (layer){
-
-
-            // }
-        }
-
-        canvas.restore();
-
-    }*/
-
     public synchronized void drawLayers(Canvas canvas, RectF CANVAS_RECT){
         Iterator<Layer> iterator=layers.iterator();
         canvas.save();
-
-        //canvas.rotate(Layer.mAngle,Layer.scalePointX,Layer.scalePointY);
-
         canvas.drawRect(CANVAS_RECT,DrawingContourView.whitePaint);
         canvas.drawBitmap(currentFrame.framesBitmap,null,CANVAS_RECT,DrawingContourView.framePaint);
 
@@ -346,11 +247,6 @@ public class Frame {
 
         if(DrawingContourView.isCurrentResizeMethod()){
 
-            //canvas.scale(Frame.currentFrame.currentLayer.scaleFactor,Frame.currentFrame.currentLayer.scaleFactor,Frame.currentFrame.currentLayer.scalePointX,Frame.currentFrame.currentLayer.scalePointY);
-            //canvas.translate(Frame.currentFrame.currentLayer.mPosX,Frame.currentFrame.currentLayer.mPosY);
-            //canvas.rotate(Frame.currentFrame.currentLayer.mAngle,Frame.currentFrame.currentLayer.scalePointX,Frame.currentFrame.currentLayer.scalePointY);
-
-            //canvas.drawBitmap(resizeCrop,0,0,mBitmapPaint);
             Matrix matrix=new Matrix();
             matrix.reset();
             RectF rectF=currentLayer.LAYER_DST_RECT;
@@ -379,11 +275,10 @@ public class Frame {
     }
 
     public synchronized void removeCurrentPen() {
-        //synchronized (currentLayer){
+
             currentLayer.removeCurrentPen();
             if(LAYER_HISTORY.size()>0)
                 LAYER_HISTORY.remove(LAYER_HISTORY.size()-1);
-        //}
 
     }
 

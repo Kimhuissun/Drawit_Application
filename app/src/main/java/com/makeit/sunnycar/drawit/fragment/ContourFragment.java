@@ -46,7 +46,6 @@ public class ContourFragment extends Fragment {
         changeSeekbar();
         kernelBar.setOnSeekBarChangeListener(onSeekBarChangeListener);
 
-        //photoButtons[ThreshHandler.ORIGINAL]=findViewById(R.id.original);
         photoButtons[ThreshHandler.THRESH_BINARY]=rootView.findViewById(R.id.threshold_binary);
         photoButtons[ThreshHandler.THRESH_BINARY_INV]=rootView.findViewById(R.id.threshold_binary_inv);
         photoButtons[ThreshHandler.THRESH_TRUNC]=rootView.findViewById(R.id.threshold_binary_trunc);
@@ -66,7 +65,6 @@ public class ContourFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            //ThreshHandler.METHOD=ThreshHandler.PHOTO_OUTLINE;
             int id=v.getId();
             switch (id){
 
@@ -123,7 +121,6 @@ public class ContourFragment extends Fragment {
             setOtherBackgroundColorTransparent();
             changeSeekbar();
             threshold(false);
-            //thresh.sendMessage(ThreshHandler.THRESH_PHOTO_VIEW);
 
         }
     };
@@ -157,13 +154,12 @@ public class ContourFragment extends Fragment {
 
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {
-            //thresh.sendMessage(ThreshHandler.THRESH_PHOTO_VIEW);
-            //threshold(false);
+
         }
 
         @Override
         public void onStopTrackingTouch(SeekBar seekBar) {
-            //thresh.sendMessage(ThreshHandler.THRESH_PHOTO_VIEW);
+
             threshold(false);
         }
     };
@@ -175,8 +171,7 @@ public class ContourFragment extends Fragment {
 
                 case R.id.next:
                     threshold(true);
-                    //imageView.resetBitmapForDraw();
-                    //finish();
+
                     break;
 
 
@@ -211,27 +206,8 @@ public class ContourFragment extends Fragment {
     }
     public void threshold(boolean forDraw) {
 
-
-/*
-        Threshold.ERODE_METHOD=erode.isChecked();
-        Threshold.DILATE_METHOD=dilate.isChecked();
-        Threshold.GAUSSIAN_METHOD=gaussian.isChecked();*/
         thresh.setForDraw(forDraw);
-        //if(forDraw){
-           /* final TextView textView=new TextView(this);
-            textView.setTextColor(Color.BLUE);
-            textView.setText("Please wait...");
-            RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
-            relativeLayout.addView(textView,layoutParams);
-            thresh.setTextView(textView);*/
 
-
-
-       /* }else {
-            thresh.setProgressBar(null);
-        }*/
         final ProgressBar progressBar=new ProgressBar(getContext());
         RelativeLayout.LayoutParams layoutParams=new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -242,7 +218,6 @@ public class ContourFragment extends Fragment {
             photoButtons[i].setEnabled(false);
         kernelBar.setEnabled(false);
         thresh.sendMessage();
-        //new Threshold(relativeLayout,textView,imageView,this,forDraw).start();
 
     }
     @Nullable
@@ -255,10 +230,8 @@ public class ContourFragment extends Fragment {
         relativeLayout=(RelativeLayout)rootView.findViewById(R.id.relativeLayout);
 
         pictureInfo=(TextView)rootView.findViewById(R.id.pictureInfo);
-        //imageButtons[LOAD_MENU]=(ImageButton)findViewById(R.id.load);
         imageButtons[REDO_MENU]=(ImageButton)rootView.findViewById(R.id.redo);
         imageButtons[NEXT_MENU]=(ImageButton)rootView.findViewById(R.id.next);
-        //imageButtons[SAVE_MENU]=(ImageButton)findViewById(R.id.save);
         for(int i=0;i<BOTTOM_MENU_NUM;i++)
             imageButtons[i].setOnClickListener(onClickListener);
 
@@ -266,6 +239,6 @@ public class ContourFragment extends Fragment {
 
         thresh=new Threshold(relativeLayout,imageView,photoButtons,kernelBar,getContext());
         thresh.start();
-        return rootView;//super.onCreateView(inflater, container, savedInstanceState);
+        return rootView;
     }
 }

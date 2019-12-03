@@ -21,12 +21,9 @@ public class Layer {
     public Pen pen=new Pen();
     public static final int OPACITY_MAX=255;
     public int layerOpacity=OPACITY_MAX;
-    public Bitmap pathBitmap;//=Bitmap.createBitmap(DrawingContourView.WIDTH,DrawingContourView.HEIGHT, Bitmap.Config.ARGB_8888);//,exampleBitmap;
-    private Canvas pathCanvas;//=new Canvas(pathBitmap);
-    //public Bitmap copyPathBitmap=Bitmap.createBitmap(DrawingContourView.WIDTH,DrawingContourView.HEIGHT, Bitmap.Config.ARGB_4444);//,exampleBitmap;
-    //public Canvas copyPathCanvas=new Canvas(copyPathBitmap);
+    public Bitmap pathBitmap;
+    private Canvas pathCanvas;
     public boolean eyeOn=true;
-    //private boolean isSketch=false;
 
     public float scaleFactor=1;
     public float scalePointX, scalePointY;
@@ -43,15 +40,9 @@ public class Layer {
     private Paint layerPaint;
     private static Paint highBPPaint;
     private static Paint lowBPPaint;
-    //private Path currentPath;
-    private Paint alphaPaint;//,drawingPaint;
+
+    private Paint alphaPaint;
     private boolean isResized=false;
-    //private Path currentPath;
-
-    //public Matrix layerMatrix=new Matrix();
-
-    //public static int CURRENT_LAYER_POSITION=0;
-    //public static int SKETCH_LAYER_POSITION=0;
 
     public Layer() {
         init();
@@ -84,15 +75,8 @@ public class Layer {
             alphaPaint.setFlags(Paint.DITHER_FLAG);
         }
 
-        //layerPaint.setDither(true);
-        //layerPaint.setFlags(Paint.DITHER_FLAG);
-        //layerPaint.setAntiAlias(true);
-
-        /*if(Threshold.FINAL_IMAGE!=null) pathBitmap=Bitmap.createBitmap(Threshold.FINAL_IMAGE.getWidth(),Threshold.FINAL_IMAGE.getHeight(), Bitmap.Config.ARGB_8888);//,exampleBitmap;
-        else*/
         pathBitmap=Bitmap.createBitmap(DrawingContourView.WIDTH,DrawingContourView.HEIGHT, Bitmap.Config.ARGB_8888);//,exampleBitmap;
         pathCanvas=new Canvas(pathBitmap);
-        //LAYER_DST_RECT.set(0,0,DrawingContourView.WIDTH,DrawingContourView.HEIGHT);
 
         LAYER_DST_RECT.set(DrawingContourView.CENTER_RECTF);
     }
@@ -100,7 +84,7 @@ public class Layer {
 
 
     public synchronized void addSketch() {
-        //isSketch=true;
+
         pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
         Rect canvas_layout=new Rect(0,0, DrawingContourView.WIDTH,DrawingContourView.HEIGHT);
 
@@ -108,14 +92,6 @@ public class Layer {
             isResized=true;
             resizedBitmapCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
         }
-        /*if(ThreshHandler.METHOD==ThreshHandler.PHOTO_OUTLINE
-                &&ThreshHandler.FINAL_IMAGE!=null){
-            resizedBitmapCanvas.drawBitmap(ThreshHandler.FINAL_IMAGE, null,canvas_layout,highBPPaint);
-        }else if(ThreshHandler.METHOD==ThreshHandler.ORIGINAL_PHOTO
-                &&GetImage.imageViewBitmap!=null){
-            resizedBitmapCanvas.drawBitmap(GetImage.imageViewBitmap,null,canvas_layout, highBPPaint);
-        }*/
-        //resizedBitmapCanvas.drawBitmap(ThreshHandler.FINAL_IMAGE,null,canvas_layout, highBPPaint);
         float[] factor=new float[3];
         float image_width=ThreshHandler.FINAL_IMAGE.getWidth();
         float image_height=ThreshHandler.FINAL_IMAGE.getHeight();
@@ -142,16 +118,6 @@ public class Layer {
         resizedBitmapCanvas.drawBitmap(ThreshHandler.FINAL_IMAGE,null,center_rectf,highBPPaint);
         pathCanvas.drawBitmap(resizedBitmap, 0,0,highBPPaint);
 
-        //DrawingContourView.CURRENT_METHOD=DrawingContourView.RESIZE_METHOD;
-
-
-        //pen.addSketch(pathCanvas);
-
-        //pen.redraw(pathCanvas, isSketch,false);
-        //pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-        //pathCanvas.drawBitmap(pathBitmapBefore,0,0,lowBPPaint);
-        //currentPath=null;drawingPaint=null;
-
     }
     public synchronized void undo() {
         Rect canvas_layout=new Rect(0,0, DrawingContourView.WIDTH,DrawingContourView.HEIGHT);
@@ -160,9 +126,7 @@ public class Layer {
             pathCanvas.drawBitmap(resizedBitmap,null,canvas_layout,highBPPaint);
 
         pen.undo(pathCanvas);
-        //pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-        //pathCanvas.drawBitmap(pathBitmapBefore,0,0,lowBPPaint);
-        // currentPath=null;drawingPaint=null;
+
     }
     public synchronized void redo(Path path, Paint paint){
         Rect canvas_layout=new Rect(0,0, DrawingContourView.WIDTH,DrawingContourView.HEIGHT);
@@ -171,33 +135,17 @@ public class Layer {
             pathCanvas.drawBitmap(resizedBitmap,null,canvas_layout,highBPPaint);
 
         pen.redo( path,  paint, pathCanvas);
-        //pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-        //pathCanvas.drawBitmap(pathBitmapBefore,0,0,lowBPPaint);
-        //currentPath=null;drawingPaint=null;
+
     }
 
     public synchronized void redrawForSave(Canvas layersCanvas) {
         if(eyeOn) {
-            //pen.redraw(pathCanvas, isSketch, true);
 
-           /* canvas.save();
-            canvas.scale(scaleFactor,scaleFactor,scalePointX,scalePointY);
-            canvas.translate(mPosX,mPosY);
-            canvas.rotate(mAngle,scalePointX,scalePointY);*/
            layerPaint.setAlpha(layerOpacity);
            layersCanvas.drawBitmap(pathBitmap,0,0,layerPaint);//layout0,1이 window상의 원점을 가르키지 않는 이유
-                //canvas.restore();
 
         }
     }
-
-    /*public synchronized void resetBeforeCanvas() {
-
-       if(eyeOn){
-           pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-           pathCanvas.drawBitmap(pathBitmapBefore,0,0, lowBPPaint);
-       }
-    }*/
 
     public synchronized void redrawOnBeforeCanvas(Path currentPath, Paint drawingPaint) {
         if(eyeOn){
@@ -216,43 +164,14 @@ public class Layer {
         }
     }
     public synchronized void redrawOnBeforeCanvas() {
-       // synchronized (Frame.currentFrame.currentLayer){
-           // if(!isEraserMode) {
 
                 if(eyeOn){
-                   /* if(currentAction== MotionEvent.ACTION_DOWN)
-                        setPathBitmapBefore(currentPath,  drawingPaint);
-                    else if(currentAction== MotionEvent.ACTION_UP)
-                        setCurrentPathBitmap();
-                        //setPathBitmapCurrent();*/
-
-                    //0608
-                  /*  if(currentAction== MotionEvent.ACTION_DOWN)
-                        setPathBitmapBefore(currentPath,drawingPaint);
-*/
-                   /* if(currentAction==MotionEvent.ACTION_DOWN||
-                            currentAction==MotionEvent.ACTION_MOVE||
-                            currentAction==MotionEvent.ACTION_UP){*/
 
                            pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
                            pathCanvas.drawBitmap(pathBitmapBefore,0,0, lowBPPaint);
 
-                           /*if(this.drawingPaint!=null&&this.currentPath!=null){
-                               pathCanvas.drawPath(
-                                       this.currentPath,
-                                       this.drawingPaint
-                               );
-                           }*/
-                    //}
-
-                    /*if(currentAction== MotionEvent.ACTION_UP){
-                        setCurrentPathBitmap(currentPath,drawingPaint);
-                        //setPathBitmapBefore();
-                    }*/
-
-
                 }
-        //}
+
 
     }
 

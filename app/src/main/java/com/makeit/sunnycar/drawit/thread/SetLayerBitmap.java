@@ -47,63 +47,7 @@ public class SetLayerBitmap extends Thread {
         handler.post(new Runnable() {
             @Override
             public void run() {
-              /*  synchronized (Frame.currentFrame.layers){
-                    Iterator<Layer> iterator=Frame.currentFrame.layers.iterator();
-                    while(iterator.hasNext()) {
-                        Layer layer = iterator.next();
-                        synchronized (layer){
-                            layer.pathCanvas.save();
-                            layer.pathCanvas.scale(layer.scaleFactor,layer.scaleFactor,layer.scalePointX,layer.scalePointY);
-                            layer.pathCanvas.translate(layer.mPosX,layer.mPosY);
-                            layer.pathCanvas.rotate(layer.mAngle,layer.scalePointX,layer.scalePointY);
-                            layer.pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-                            DrawingContourView.mBitmapPaint.setAlpha(layer.layerOpacity);
-                            if(layer.isSketch&&Threshold.FINAL_IMAGE!=null){
-                                layer.pathCanvas.drawBitmap(Threshold.FINAL_IMAGE,0,0,DrawingContourView.mBitmapPaint);
 
-                            }
-
-                            synchronized (layer.pen){
-                                Iterator<Path> pathIterator=layer.pen.pathArrayList.iterator();
-                                Iterator<Paint> paintIterator=layer.pen.paintArrayList.iterator();
-                                while (pathIterator.hasNext()&&paintIterator.hasNext()){
-                                    layer.pathCanvas.drawPath(pathIterator.next(), paintIterator.next());
-
-                                }
-
-                            }
-                            layer.pathCanvas.restore();
-
-
-                        }
-                    }
-                }*/
-               /* for(int i=0;i< Frame.currentFrame.layers.size();i++){
-                    Layer layer=Frame.currentFrame.layers.get(i);
-                        //if(layer.pathBitmap==null){
-                            //layer.pathBitmap =
-                                  //  Bitmap.createBitmap(DrawingContourView.WIDTH, DrawingContourView.HEIGHT, Bitmap.Config.ARGB_4444);
-                            //layer.pathCanvas=new Canvas(layer.pathBitmap);
-                    layer.pathCanvas.scale(layer.scaleFactor,layer.scaleFactor,layer.scalePointX,layer.scalePointY);
-                    layer.pathCanvas.translate(layer.mPosX,layer.mPosY);
-                    layer.pathCanvas.rotate(layer.mAngle,layer.scalePointX,layer.scalePointY);
-
-                    layer.pathCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.SRC_OUT);
-                    DrawingContourView.mBitmapPaint.setAlpha(layer.layerOpacity);
-                    if(layer.isSketch&&Threshold.FINAL_IMAGE!=null){
-                        layer.pathCanvas.drawBitmap(Threshold.FINAL_IMAGE,0,0,DrawingContourView.mBitmapPaint);
-
-                    }
-                    for (int j = 0; j < layer.pen.pathArrayList.size(); j++) {
-                        Path p = layer.pen.pathArrayList.get(j);
-                        Paint paint = layer.pen.paintArrayList.get(j);
-                        //scaled된 canvas translate 와 원래 그 크기의 canvas translate
-                        layer.pathCanvas.drawPath(p, paint);
-                    }
-                        //}
-
-                }
-*/
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -116,7 +60,6 @@ public class SetLayerBitmap extends Thread {
 
                                 LinearLayoutManager linearLayoutManager=new LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false);
                                 recyclerView.setLayoutManager(linearLayoutManager);
-                                //layerAdapter=new LayerAdapter(context,drawingContourView);
                                 ItemTouchHelper.Callback callback=new EditItemTouchHelperCallback(layerAdapter);
                                 itemTouchHelper=new ItemTouchHelper(callback);
                                 itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -129,9 +72,6 @@ public class SetLayerBitmap extends Thread {
                                 });
 
                                 recyclerView.setAdapter(layerAdapter);
-                                /*FrameLayout.LayoutParams layoutParams=new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                                layoutParams.gravity= Gravity.END;
-                                frameLayout.addView(layerView,layoutParams);*/
                                 PopupWindow popupWindow=new PopupWindow(context);
                                 popupWindow.setHeight(frameLayout.getHeight());
                                 popupWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -43,8 +43,7 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.MyViewHolder> 
         else
             holder.relativeLayout.setBackgroundColor(context.getResources().getColor(R.color.white));
         holder.imageView.setBitmap(position,layerAdapter);
-        //holder.imageView.setImageBitmap(LayerAdapter.frames.get(position).layersBitmap);
-        //holder.imageView.invalidate();
+
     }
 
     @Override
@@ -78,10 +77,9 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.MyViewHolder> 
                 (view).setBackgroundColor(context.getResources()
                         .getColor(R.color.red));
 
-              /*  if(opacityBar!=null)
-                    opacityBar.setProgress(Frame.currentFrame.frameOpacity);*/
+
                 Frame.currentFrame.drawNotCurrentFramesBitmap();
-                //drawingContourView.invalidate();
+
 
             }
         }
@@ -95,10 +93,6 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.MyViewHolder> 
                 int removedPosition=Frame.CURRENT_FRAME_POSITION;
                 Frame.setCurrentFrame(0,layerAdapter);
                 layerAdapter.frames.remove(removedPosition);
-            /*Bitmap bitmap=layerAdapter.frames.remove(removedPosition).layersBitmap;
-            if(bitmap!=null&&!bitmap.isRecycled()) {
-                bitmap.recycle();
-            }*/
 
                 notifyItemRemoved(removedPosition);
                 notifyItemRangeChanged(removedPosition,layerAdapter.frames.size()-1);
@@ -108,7 +102,6 @@ public class PlayAdapter extends RecyclerView.Adapter<PlayAdapter.MyViewHolder> 
     public void addFrame() {
         synchronized (layerAdapter.frames){
             layerAdapter.frames.add(new Frame());
-            //Frame.setCurrentFrame(LayerAdapter.frames.size()-1);
             notifyItemInserted(layerAdapter.frames.size()-1);
         }
 

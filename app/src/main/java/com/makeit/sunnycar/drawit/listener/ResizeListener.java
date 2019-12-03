@@ -13,9 +13,7 @@ public class ResizeListener {
 
     private final Context context;
     private final RectF CANVAS_DST_RECT;
-    //private int mActivePointerId=INVALID_POINTER_ID;
-    //private float mLastTouchY=-1;
-    //private float mLastTouchX=-1;
+
     private int mFirstActivePointerId=-1;
     private int mSecActivePointerId;
 
@@ -47,8 +45,6 @@ public class ResizeListener {
                     final float y = motionEvent.getY(pointerIndex);
                     primStartTouchEventXY[0] = x;//motionEvent.getX(0);
                     primStartTouchEventXY[1] = y;//motionEvent.getY(0);
-                    //mLastTouchX = x;
-                    //mLastTouchY = y;
 
                     mFirstActivePointerId = motionEvent.getPointerId(pointerIndex);
                 }
@@ -78,8 +74,6 @@ public class ResizeListener {
                     Frame.currentFrame.currentLayer.mPosX += dx;
                     Frame.currentFrame.currentLayer.mPosY += dy;
 
-                    //drawingContourView.calculateLayerDstRect(1.0f);
-
                     primStartTouchEventXY[0] = x;
                     primStartTouchEventXY[1] = y;
                 }
@@ -102,8 +96,6 @@ public class ResizeListener {
                             secY = motionEvent.getY(secPointerIndex);
                             diffSecX=secX-secStartTouchEventXY[0];
                             diffSecY=secY-secStartTouchEventXY[1];
-                            //dx=secX-mLastX;
-                            //dy=secY-mLastY;
 
                         }
 
@@ -171,22 +163,14 @@ public class ResizeListener {
     extends ScaleGestureDetector.SimpleOnScaleGestureListener{
         @Override
         public boolean onScaleBegin(ScaleGestureDetector detector) {
-            //Frame.currentFrame.currentLayer.scalePointX=detector.getFocusX();
-            //Frame.currentFrame.currentLayer.scalePointY=detector.getFocusY();
-            return true;//super.onScaleBegin(detector);
+             return true;//super.onScaleBegin(detector);
         }
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
 
-            //float scaleFactor=Frame.currentFrame.currentLayer.scaleFactor;
-            //scaleFactor*=detector.getScaleFactor();
-            //scaleFactor= Math.max(0.1f,Math.min(scaleFactor,5.0f));
-            //Frame.currentFrame.currentLayer.scaleFactor=scaleFactor;
-
-
             calculateLayerDstRect(detector.getScaleFactor());
-            return true;//super.onScale(detector);
-        }
+            return true;
+    }
     }
 }

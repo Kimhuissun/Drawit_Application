@@ -20,19 +20,7 @@ public class CropActivity extends AppCompatActivity {
         setContentView(R.layout.crop_content);
         cropImageView=(CropImageView) findViewById(R.id.cropImageView);
 
-  /*      cropImageView.crop(uri)
-                .execute(new CropCallback() {
-                    @Override
-                    public void onSuccess(Bitmap cropped) {
-                        GetImage.imageViewBitmap=cropped;
-                        new GetImage(getApplicationContext()).start();
-                    }
 
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });*/
 
     }
 
