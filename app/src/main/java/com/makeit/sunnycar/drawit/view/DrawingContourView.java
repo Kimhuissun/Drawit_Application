@@ -28,7 +28,6 @@ import com.makeit.sunnycar.drawit.data.Frame;
 import com.makeit.sunnycar.drawit.data.Layer;
 import com.makeit.sunnycar.drawit.handler.ThreshHandler;
 import com.makeit.sunnycar.drawit.listener.ResizeListener;
-import com.makeit.sunnycar.drawit.listener.UserFriendlyCanvasListener;
 import com.makeit.sunnycar.drawit.thread.GetImage;
 
 import java.util.Iterator;

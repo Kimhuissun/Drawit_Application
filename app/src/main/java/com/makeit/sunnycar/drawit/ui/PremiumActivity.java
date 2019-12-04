@@ -128,5 +128,5 @@ public class PremiumActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
-    
+
 }
